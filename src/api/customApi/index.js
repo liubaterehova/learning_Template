@@ -1,11 +1,11 @@
-import { API_URL } from '../index';
+import { BASE_GHIBLI_URL } from '../index';
 import axios from 'axios';
 
 const http = axios.create();
 
 const makeCustomApi = ({client, headersManager}) => ({
-    // getNotification: data =>
-    //     http.post(`${API_URL}/boston`, { ...data }),
+    getGhibliFilms: () =>
+        http.get(`${BASE_GHIBLI_URL}/films`),
 });
 
 export default makeCustomApi;

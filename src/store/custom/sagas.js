@@ -33,11 +33,27 @@ import { history } from './../../history';
 //     }
 // }
 
+function* getGhibliFilmsSaga({ payload }) {
+    try {
+        let response;
+        const custom = makeApi().custom;
+        response = yield call([custom, custom.getGhibliFilms]);
+
+        if (response.data) {
+            yield put(types.getGhibliFilmsSuccess({ ghibliFilms: response.data }));
+        }
+
+    } catch (error) {
+        yield put(types.processFailure({ error }))
+    }
+}
+
+
 
 
 
 const customSagas = [
-    // takeEvery(types.signUp, signUpSaga),
+    takeEvery(types.getGhibliFilms, getGhibliFilmsSaga),
    
 ];
 

@@ -6,16 +6,15 @@ import { actions as customActions } from '../../store/custom';
 import MainPage from '../../components/pages/MainPage';
 
 const mapStateToProps = (state) => {
-    
   return {
-    //...state.authActions,
+    films: state.custom.ghibliFilms
   };
 };
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      customActions,
+      getFilms: customActions.getGhibliFilms,
     },
     dispatch,
   );
