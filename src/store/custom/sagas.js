@@ -48,13 +48,17 @@ function* getGhibliFilmsSaga({ payload }) {
     }
 }
 
-
+function* onDescriptionChangeSaga({ payload }) {
+    yield put(types.onDescriptionChange(payload));
+}
 
 
 
 const customSagas = [
     takeEvery(types.getGhibliFilms, getGhibliFilmsSaga),
-   
+    takeEvery(types.onDescriptionChange, onDescriptionChangeSaga),
+
 ];
+
 
 export default customSagas
