@@ -2,9 +2,21 @@ const initialState = {
     isLoading: false,
     error: null,
     ghibliFilms: [],
+    people: [],
 };
 
-//общий экшен для всех ошибок в Custom
+
+export const getGhibliPeople = (state, { payload }) => ({
+    ...state,
+    isLoading: true,
+});
+
+export const getGhibliPeopleSuccess = (state, { payload }) => ({
+        ...state,
+        isLoading: false,
+        getGhibliPeople: payload.ghibliPeople,
+    })
+    //общий экшен для всех ошибок в Custom
 export const processFailure = (state, { payload }) => ({
     ...state,
     error: payload.error,
@@ -30,7 +42,9 @@ export const onFilmDescriptionChange = (state, { payload }) => {
 
 }
 export const onFilmDescriptionChangeSuccess = (state, { payload }) => {
+    console.log(payload);
     const searchIndex = state.ghibliFilms.findIndex((film) => film.id === payload.id);
+    console.log(searchIndex);
     let leftPart = state.ghibliFilms.slice(0, searchIndex);
     let rightPart = state.ghibliFilms.slice(searchIndex + 1);
     let newFilm = {
@@ -38,14 +52,10 @@ export const onFilmDescriptionChangeSuccess = (state, { payload }) => {
         rt_score: payload.rt_score,
         release_date: payload.release_date,
         title: payload.title,
-        producer: payload.producer,
+        director: payload.director,
         id: payload.id,
-    }
-    console.log('newFilm', newFilm);
-    //let newFilm = {...state.ghibliFilms[searchIndex], description: payload.description };
+    };
     let newArr = [...leftPart, newFilm, ...rightPart];
-    console.log(...leftPart);
-    console.log(newArr);
     return ({
         ...state,
         ghibliFilms: newArr,
