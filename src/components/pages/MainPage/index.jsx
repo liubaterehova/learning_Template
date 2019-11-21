@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { Card, Typography, List, Icon, Modal, Input, message, Button  } from 'antd';
+import { Card, Typography, List, Icon, Modal, Input, message  } from 'antd';
 import "./style.css";
 
 const { TextArea } = Input;
