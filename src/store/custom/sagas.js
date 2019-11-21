@@ -48,15 +48,20 @@ function* getGhibliFilmsSaga({ payload }) {
     }
 }
 
-function* onDescriptionChangeSaga({ payload }) {
-    yield put(types.onDescriptionChange(payload));
+function* onFilmDescriptionChangeSaga({ payload }) {
+    yield put(types.onFilmDescriptionChangeSuccess(payload));
+}
+
+function* onFilmRateChangeSaga({ payload }) {
+    yield put(types.onFilmRateChangeSuccess(payload));
 }
 
 
 
 const customSagas = [
     takeEvery(types.getGhibliFilms, getGhibliFilmsSaga),
-    takeEvery(types.onDescriptionChange, onDescriptionChangeSaga),
+    takeEvery(types.onFilmDescriptionChange, onFilmDescriptionChangeSaga),
+    takeEvery(types.onFilmRateChange, onFilmRateChangeSaga),
 
 ];
 
