@@ -30,13 +30,22 @@ export const onFilmDescriptionChange = (state, { payload }) => {
 
 }
 export const onFilmDescriptionChangeSuccess = (state, { payload }) => {
-
     const searchIndex = state.ghibliFilms.findIndex((film) => film.id === payload.id);
-    console.log(searchIndex);
     let leftPart = state.ghibliFilms.slice(0, searchIndex);
     let rightPart = state.ghibliFilms.slice(searchIndex + 1);
-    let newFilm = {...state.ghibliFilms[searchIndex], description: payload.description };
+    let newFilm = {
+        description: payload.description,
+        rt_score: payload.rt_score,
+        release_date: payload.release_date,
+        title: payload.title,
+        producer: payload.producer,
+        id: payload.id,
+    }
+    console.log('newFilm', newFilm);
+    //let newFilm = {...state.ghibliFilms[searchIndex], description: payload.description };
     let newArr = [...leftPart, newFilm, ...rightPart];
+    console.log(...leftPart);
+    console.log(newArr);
     return ({
         ...state,
         ghibliFilms: newArr,

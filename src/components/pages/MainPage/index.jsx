@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { Card, Typography, List, Icon, Modal, Input  } from 'antd';
+import { Card, Typography, List, Icon, Modal, Input, message, Button  } from 'antd';
 import "./style.css";
 
 const { TextArea } = Input;
@@ -14,7 +14,7 @@ class MainPage extends React.Component {
     modalDescription: '',
     modalRate: 0,
     modalReleaseDate: null,
-    modalDirector: '',
+    modalProducer: '',
     modalId:null,
     modalTitle:'',
   };
@@ -28,9 +28,9 @@ class MainPage extends React.Component {
       modalDescription:el.description,
       modalRate:el.rt_score,
       modalReleaseDate:el.release_date,
-      modalDirector:el.producer,
+      modalProducer:el.producer,
       modalId:el.id,
-      modalTitle:el.title
+      modalTitle:el.title,
 
     });
   };
@@ -41,7 +41,7 @@ class MainPage extends React.Component {
                   rt_score: this.state.modalRate,
                   release_date:this.state.modalReleaseDate,
                   title:this.state.modalTitle,
-                  producer:this.state.modalDirector,
+                  producer:this.state.modalProducer,
                   id:this.state.modalId,
                   };
   
@@ -50,6 +50,7 @@ class MainPage extends React.Component {
     this.setState({
       visible: false,
     });
+    this.info();
   };
 
   handleCancel = e => {
@@ -58,7 +59,9 @@ class MainPage extends React.Component {
       visible: false,
     });
   };
-
+  info = () => {
+    message.info('Good guy');
+  };
   componentDidCatch(error, info)
   {
     this.setState({ error: true })
@@ -91,7 +94,7 @@ class MainPage extends React.Component {
                                   //this.showModalDescription(el) 
                             />
                     </Title>} >
-                      <Title level={4}>Director: {el.director}
+                      <Title level={4}>Producer: {el.producer}
                                       
                       </Title>
                       <Title level={4}>Release date: {el.release_date}
@@ -117,8 +120,8 @@ class MainPage extends React.Component {
                 {this.state.modalDescription}
                 </TextArea>
 
-                <TextArea onChange={ (e) => this.setState({ modalDirector: e.target.value }) }>
-                {this.state.modalDirector}
+                <TextArea onChange={ (e) => this.setState({ modalProducer: e.target.value }) }>
+                {this.state.modalProducer}
                 </TextArea>
                 <TextArea onChange={ (e) => this.setState({ modalTitle: e.target.value }) }>
                 {this.state.modalTitle}
@@ -127,6 +130,7 @@ class MainPage extends React.Component {
                   {this.state.modalRate}
                 </TextArea>
         </Modal>
+        
       </div>
     );
   }
