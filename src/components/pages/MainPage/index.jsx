@@ -9,46 +9,51 @@ const { Title, Text } = Typography;
 
 class MainPage extends React.Component {
 
-  state={
-    error: false,
+  state = {
     visible: false,
-    description: '',
-    id:null,
+    modalDescription: '',
+    modalRate: 0,
+    modalReleaseDate: null,
+    modalDirector: '',
+    modalId:null,
+    modalTitle:'',
   };
   
 
-  showModal = (description, id, rt_score) => {
+  
+
+  showModal = (el) => {
     this.setState({
       visible: true,
-      description,
-      id,
-      rt_score,
+      modalDescription:el.description,
+      modalRate:el.rt_score,
+      modalReleaseDate:el.release_date,
+      modalDirector:el.producer,
+      modalId:el.id,
+      modalTitle:el.title
+
     });
   };
+  
 
-  handleOk = e => {
-    const obj = {description: this.state.description, 
-                  id: this.state.id,
-                  rt_score: this.state.rt_score};
-    
-    
-    console.log(this.state.id);
-    console.log('rtScore', this.state.rt_score);
-    console.log(' проверка description', obj.description);
-    console.log(' проверка rate', obj.rt_score)
-    if (obj.description){
+  handleOk = () => {
+    const obj = {description: this.state.modalDescription, 
+                  rt_score: this.state.modalRate,
+                  release_date:this.state.modalReleaseDate,
+                  title:this.state.modalTitle,
+                  producer:this.state.modalDirector,
+                  id:this.state.modalId,
+                  };
+  
         this.props.onDescriptionChange(obj);
-    }
-    if (obj.rt_score){
-        this.props.onRateChange(obj);
-    }
+        //this.props.onRateChange(obj);
     this.setState({
       visible: false,
     });
   };
 
   handleCancel = e => {
-    console.log(e);
+    console.log('e');
     this.setState({
       visible: false,
     });
@@ -81,21 +86,21 @@ class MainPage extends React.Component {
                   (el) => (
                   <List.Item>
                     <Card className='MainPage-card' title={<Title level={3}>{el.title}
-                            <Icon type ='edit' />
+                            <Icon type ='edit' 
+                                  onClick={ () => this.showModal(el)}
+                                  //this.showModalDescription(el) 
+                            />
                     </Title>} >
                       <Title level={4}>Director: {el.director}
-                                      <Icon type ='edit' />
+                                      
                       </Title>
                       <Title level={4}>Release date: {el.release_date}
-                                      <Icon type ='edit' />
+                                     
                       </Title>
                       <Title level={4}>Rating: {el.rt_score} 
-                                       <Icon type ='edit'
-                                             onClick= { ()=> this.showModal(el.rt_score, el.id) }/>
+                                       
                       </Title>
-                      <Title level={4}>Description <Icon type="edit"
-                      
-                                                         onClick={ () => this.showModal(el.description, el.id) } /></Title>
+                      <Title level={4}>Description </Title>
                      
                       <Text>{el.description}</Text>
                     </Card>
@@ -105,16 +110,22 @@ class MainPage extends React.Component {
                 
           </div>
         }
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-          <TextArea rows={4} onChange = {(e) => {
-           this.setState({description: e.target.value,
-                          rt_state: e.target.value})
-          }}>{this.state.description}</TextArea>
+        <Modal visible={this.state.visible}
+              onOk={this.handleOk}
+                onCancel={this.handleCancel}>
+                 <TextArea onChange={ (e) => this.setState({ modalDescription: e.target.value }) }>
+                {this.state.modalDescription}
+                </TextArea>
+
+                <TextArea onChange={ (e) => this.setState({ modalDirector: e.target.value }) }>
+                {this.state.modalDirector}
+                </TextArea>
+                <TextArea onChange={ (e) => this.setState({ modalTitle: e.target.value }) }>
+                {this.state.modalTitle}
+                </TextArea>
+                <TextArea onChange={ (e) => this.setState({ modalRate: e.target.value }) }>
+                  {this.state.modalRate}
+                </TextArea>
         </Modal>
       </div>
     );

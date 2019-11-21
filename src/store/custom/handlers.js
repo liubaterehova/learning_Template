@@ -29,10 +29,8 @@ export const onFilmDescriptionChange = (state, { payload }) => {
     })
 
 }
-
 export const onFilmDescriptionChangeSuccess = (state, { payload }) => {
-    console.log('onDescriptionChange payload=', payload);
-    console.log('payload.id =', payload.id);
+
     const searchIndex = state.ghibliFilms.findIndex((film) => film.id === payload.id);
     console.log(searchIndex);
     let leftPart = state.ghibliFilms.slice(0, searchIndex);
