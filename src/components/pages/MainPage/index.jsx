@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { Card, Typography, List, Icon, Modal, Input  } from 'antd';
+import { Card, Typography, List, Icon, Modal, Input, message, Button  } from 'antd';
 import "./style.css";
 
 const { TextArea } = Input;
@@ -28,7 +28,7 @@ class MainPage extends React.Component {
       modalDescription:el.description,
       modalRate:el.rt_score,
       modalReleaseDate:el.release_date,
-      modalDirector:el.producer,
+      modalDirector:el.director,
       modalId:el.id,
       modalTitle:el.title
 
@@ -41,16 +41,19 @@ class MainPage extends React.Component {
                   rt_score: this.state.modalRate,
                   release_date:this.state.modalReleaseDate,
                   title:this.state.modalTitle,
-                  producer:this.state.modalDirector,
+                  director:this.state.modalDirector,
                   id:this.state.modalId,
                   };
   
         this.props.onDescriptionChange(obj);
         //this.props.onRateChange(obj);
-    this.setState({
-      visible: false,
-    });
+        this.setState({
+        visible: false,
+        });
+        message.info('Good guy');
   };
+
+  
 
   handleCancel = e => {
     console.log('e');
@@ -67,6 +70,7 @@ class MainPage extends React.Component {
   componentDidMount()
   {
     this.props.getFilms();
+    this.props.getPeople();
   }
 
 
@@ -110,21 +114,21 @@ class MainPage extends React.Component {
                 
           </div>
         }
-        <Modal visible={this.state.visible}
-              onOk={this.handleOk}
+        <Modal  visible={this.state.visible}
+                onOk={this.handleOk}
                 onCancel={this.handleCancel}>
-                 <TextArea onChange={ (e) => this.setState({ modalDescription: e.target.value }) }>
+                 <TextArea onChange={ (e) => this.setState({ modalDescription: e.target.value }) }
+                            value={this.state.modalDescription}>
                 {this.state.modalDescription}
                 </TextArea>
-
-                <TextArea onChange={ (e) => this.setState({ modalDirector: e.target.value }) }>
-                {this.state.modalDirector}
+                <TextArea onChange={ (e) => this.setState({ modalDirector: e.target.value }) }
+                          value = {this.state.modalDirector} >
                 </TextArea>
-                <TextArea onChange={ (e) => this.setState({ modalTitle: e.target.value }) }>
-                {this.state.modalTitle}
+                <TextArea onChange={ (e) => this.setState({ modalTitle: e.target.value }) }
+                          value={this.state.modalTitle}>
                 </TextArea>
-                <TextArea onChange={ (e) => this.setState({ modalRate: e.target.value }) }>
-                  {this.state.modalRate}
+                <TextArea onChange={ (e) => this.setState({ modalRate: e.target.value }) }
+                          value={this.state.modalRate}>
                 </TextArea>
         </Modal>
       </div>

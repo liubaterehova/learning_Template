@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       getFilms: customActions.getGhibliFilms,
       onDescriptionChange: customActions.onFilmDescriptionChange,
+      getPeople: customActions.getGhibliPeople,
     },
     dispatch,
   );

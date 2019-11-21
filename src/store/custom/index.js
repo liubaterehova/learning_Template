@@ -6,10 +6,13 @@ export const actions = createActions({
     PROCESS_FAILURE: undefined,
     GET_GHIBLI_FILMS: undefined,
     GET_GHIBLI_FILMS_SUCCESS: undefined,
+    GET_GHIBLI_PEOPLE: undefined,
+    GET_GHIBLI_PEOPLE_SUCCESS: undefined,
     ON_FILM_DESCRIPTION_CHANGE: undefined,
     ON_FILM_DESCRIPTION_CHANGE_SUCCESS: undefined,
     ON_FILM_RATE_CHANGE: undefined,
     ON_FILM_RATE_CHANGE_SUCCESS: undefined,
+
 
     // SIGN_UP: undefined,
     // SIGN_UP_SUCCESS: undefined,
@@ -30,6 +33,8 @@ const reducer = handleActions(
         [actions.onFilmDescriptionChangeSuccess, handlers.onFilmDescriptionChangeSuccess],
         [actions.onFilmDescriptionChange, handlers.onFilmDescriptionChange],
         [actions.onFilmRateChange, handlers.onFilmRateChange],
+        [actions.getGhibliPeople, handlers.getGhibliPeople],
+        [actions.getGhibliPeopleSuccess, handlers.getGhibliPeopleSuccess],
     ]),
     initialState,
 );
