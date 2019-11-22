@@ -14,7 +14,7 @@ export const getGhibliPeople = (state, { payload }) => ({
 export const getGhibliPeopleSuccess = (state, { payload }) => ({
         ...state,
         isLoading: false,
-        getGhibliPeople: payload.ghibliPeople,
+        people: payload.ghibliPeople,
     })
     //общий экшен для всех ошибок в Custom
 export const processFailure = (state, { payload }) => ({
