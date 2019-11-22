@@ -3,13 +3,13 @@ import GhibliPeople from '../containers/GhibliPeoplePage';
 
 
 export const customerRoutes = [{
-        path: '/main/people',
-        component: GhibliPeople,
+        path: '/main',
+        component: MainPage,
         exact: true,
     },
     {
-        path: '/main/films',
-        component: MainPage,
+        path: '/main/people',
+        component: GhibliPeople,
         exact: true,
     }
 ];
