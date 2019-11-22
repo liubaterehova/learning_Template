@@ -1,7 +1,16 @@
 // @flow
 import * as React from "react";
 
-import { Card, Typography, List, Icon, Modal, Input, message } from "antd";
+import {
+  Card,
+  Typography,
+  List,
+  Icon,
+  Modal,
+  Input,
+  message,
+  Button
+} from "antd";
 import "./style.css";
 import { Link } from "react-router-dom";
 
@@ -68,7 +77,13 @@ class MainPage extends React.Component {
     const { error } = this.state;
     return (
       <div className="MainPage">
-        <Link to="/main/people"> People</Link>
+        <Button type="dashed">
+          <Icon type="left" />
+          <Link to="/main/navigation"> Navigation</Link>
+        </Button>
+        <Button type="dashed">
+          <Link to="/main/people"> People</Link>
+        </Button>
         {error ? (
           <mark>УПс, ОшибОчка!</mark>
         ) : (

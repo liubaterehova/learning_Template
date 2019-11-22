@@ -13,7 +13,7 @@ export const customerRoutes = [{
         exact: true
     },
     {
-        path: "main/navigation",
+        path: "/main/navigation",
         component: Navigation,
         exact: true
     }
