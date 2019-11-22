@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Card, Typography, List, Icon } from "antd";
+import { Link } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -25,6 +26,7 @@ class GhibliPeople extends React.Component {
     return (
       <div>
         Hello World
+        <Link to="/main"> Main</Link>
         <List
           grid={{ gutter: 16, column: 1 }}
           dataSource={this.props.people}

@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { Card, Typography, List, Icon, Modal, Input, message } from "antd";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const { TextArea } = Input;
 const { Title, Text } = Typography;
@@ -67,6 +68,7 @@ class MainPage extends React.Component {
     const { error } = this.state;
     return (
       <div className="MainPage">
+        <Link to="/main/people"> People</Link>
         {error ? (
           <mark>УПс, ОшибОчка!</mark>
         ) : (

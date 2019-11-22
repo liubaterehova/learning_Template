@@ -1,15 +1,20 @@
-import MainPage from '../containers/MainPage';
-import GhibliPeople from '../containers/GhibliPeoplePage';
-
+import MainPage from "../containers/MainPage";
+import GhibliPeople from "../containers/GhibliPeoplePage";
+import Navigation from "../components/pages/NavigationMainPage";
 
 export const customerRoutes = [{
-        path: '/main',
+        path: "/main",
         component: MainPage,
-        exact: true,
+        exact: true
     },
     {
-        path: '/main/people',
+        path: "/main/people",
         component: GhibliPeople,
-        exact: true,
+        exact: true
+    },
+    {
+        path: "main/navigation",
+        component: Navigation,
+        exact: true
     }
 ];
