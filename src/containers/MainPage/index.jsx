@@ -8,7 +8,7 @@ import MainPage from "../../components/pages/MainPage";
 const mapStateToProps = state => {
   return {
     films: state.custom.ghibliFilms,
-    people: state.custom.ghiblipeople
+    people: state.custom.people
   };
 };
 
@@ -16,8 +16,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getFilms: customActions.getGhibliFilms,
-      onDescriptionChange: customActions.onFilmDescriptionChange,
-      getPeople: customActions.getGhibliPeople
+      onDescriptionChange: customActions.onFilmDescriptionChange
     },
     dispatch
   );

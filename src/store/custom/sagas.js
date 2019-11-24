@@ -71,6 +71,11 @@ function* onFilmRateChangeSaga({ payload }) {
     yield put(types.onFilmRateChangeSuccess(payload));
 }
 
+function* cleanGhibliPeopleSaga({ payload }) {
+    yield put(types.cleanGhibliPeopleSuccess(payload));
+}
+
+
 
 
 const customSagas = [
@@ -78,7 +83,7 @@ const customSagas = [
     takeEvery(types.onFilmDescriptionChange, onFilmDescriptionChangeSaga),
     takeEvery(types.onFilmRateChange, onFilmRateChangeSaga),
     takeEvery(types.getGhibliPeople, getGhibliPeopleSaga),
-
+    takeEvery(types.cleanGhibliPeople, cleanGhibliPeopleSaga),
 
 ];
 

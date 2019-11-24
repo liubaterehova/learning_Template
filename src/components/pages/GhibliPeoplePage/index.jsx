@@ -17,12 +17,15 @@ class GhibliPeople extends React.Component {
   componentDidCatch(error, info) {}
 
   componentDidMount() {
+    console.log("componentDidMount");
     this.props.getPeople();
   }
-
+  componentWillUnmount() {
+    console.log("componentwillunmount");
+    this.props.cleanPeople();
+    console.log("props", this.props);
+  }
   render() {
-    console.log("ghimbliPeople", this.props.people);
-
     return (
       <div>
         <Button type="dashed">

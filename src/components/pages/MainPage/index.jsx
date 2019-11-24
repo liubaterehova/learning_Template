@@ -71,6 +71,7 @@ class MainPage extends React.Component {
 
   componentDidMount() {
     this.props.getFilms();
+    console.log("arrayOfPeople", this.props.people);
   }
 
   render() {

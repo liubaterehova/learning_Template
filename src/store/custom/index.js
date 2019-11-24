@@ -12,6 +12,8 @@ export const actions = createActions({
     ON_FILM_DESCRIPTION_CHANGE_SUCCESS: undefined,
     ON_FILM_RATE_CHANGE: undefined,
     ON_FILM_RATE_CHANGE_SUCCESS: undefined,
+    CLEAN_GHIBLI_PEOPLE: undefined,
+    CLEAN_GHIBLI_PEOPLE_SUCCESS: undefined,
 
 
     // SIGN_UP: undefined,
@@ -35,6 +37,8 @@ const reducer = handleActions(
         [actions.onFilmRateChange, handlers.onFilmRateChange],
         [actions.getGhibliPeople, handlers.getGhibliPeople],
         [actions.getGhibliPeopleSuccess, handlers.getGhibliPeopleSuccess],
+        [actions.cleanGhibliPeople, handlers.cleanGhibliPeople],
+        [actions.cleanGhibliPeopleSuccess, handlers.cleanGhibliPeopleSuccess],
     ]),
     initialState,
 );

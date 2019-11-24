@@ -12,11 +12,26 @@ export const getGhibliPeople = (state, { payload }) => ({
 });
 
 export const getGhibliPeopleSuccess = (state, { payload }) => ({
+    ...state,
+    isLoading: false,
+    people: payload.ghibliPeople,
+})
+
+export const cleanGhibliPeople = (state, { payload }) => {
+    console.log('cleanGhibliPeople(handlers)');
+    return {
         ...state,
-        isLoading: false,
-        people: payload.ghibliPeople,
-    })
-    //общий экшен для всех ошибок в Custom
+    }
+};
+export const cleanGhibliPeopleSuccess = (state, { payload }) => {
+    console.log('cleanGhibliPeople(handlers)', state);
+    return {
+        ...state,
+        people: [],
+    }
+};
+
+//общий экшен для всех ошибок в Custom
 export const processFailure = (state, { payload }) => ({
     ...state,
     error: payload.error,

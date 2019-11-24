@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getPeople: customActions.getGhibliPeople
+      getPeople: customActions.getGhibliPeople,
+      cleanPeople: customActions.cleanGhibliPeople
     },
     dispatch
   );
