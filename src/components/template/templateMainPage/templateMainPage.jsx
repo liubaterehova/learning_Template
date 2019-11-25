@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navigation from "../../organisms/navigation";
-import MainPage from "../../pages/MainPage";
+import MainPage from "../../../containers/MainPage";
 
 export default class TemplateMainPage extends Component {
   render() {

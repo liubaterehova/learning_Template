@@ -1,19 +1,8 @@
 // @flow
 import * as React from "react";
 
-import {
-  Card,
-  Typography,
-  List,
-  Icon,
-  Modal,
-  Input,
-  message,
-  Button
-} from "antd";
+import { Card, Typography, List, Icon, Modal, Input, message } from "antd";
 import "./style.css";
-import { Link } from "react-router-dom";
-import Navigation from "../../organisms/navigation";
 
 const { TextArea } = Input;
 const { Title, Text } = Typography;
