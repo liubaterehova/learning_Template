@@ -71,6 +71,7 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    console.log("this.propsMount", this.props);
     this.props.getFilms();
     console.log("arrayOfPeople", this.props.people);
   }
@@ -79,7 +80,7 @@ class MainPage extends React.Component {
     const { error } = this.state;
     return (
       <div className="MainPage">
-        <Navigation />
+        {/* <Navigation /> */}
         {error ? (
           <mark>УПс, ОшибОчка!</mark>
         ) : (
