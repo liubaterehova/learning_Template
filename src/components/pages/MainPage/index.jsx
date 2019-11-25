@@ -13,6 +13,7 @@ import {
 } from "antd";
 import "./style.css";
 import { Link } from "react-router-dom";
+import Navigation from "../../organisms/navigation";
 
 const { TextArea } = Input;
 const { Title, Text } = Typography;
@@ -78,46 +79,38 @@ class MainPage extends React.Component {
     const { error } = this.state;
     return (
       <div className="MainPage">
-        <Button type="dashed">
-          <Icon type="left" />
-          <Link to="/main/navigation"> Navigation</Link>
-        </Button>
-        <Button type="dashed">
-          <Link to="/main/people"> People</Link>
-        </Button>
+        <Navigation />
         {error ? (
           <mark>УПс, ОшибОчка!</mark>
         ) : (
-          <div className="MainPage">
-            <List
-              grid={{ gutter: 16, column: 1 }}
-              dataSource={this.props.films}
-              renderItem={el => (
-                <List.Item>
-                  <Card
-                    className="MainPage-card"
-                    title={
-                      <Title level={3}>
-                        {el.title}
-                        <Icon
-                          type="edit"
-                          onClick={() => this.showModal(el)}
-                          //this.showModalDescription(el)
-                        />
-                      </Title>
-                    }
-                  >
-                    <Title level={4}>Director: {el.director}</Title>
-                    <Title level={4}>Release date: {el.release_date}</Title>
-                    <Title level={4}>Rating: {el.rt_score}</Title>
-                    <Title level={4}>Description </Title>
+          <List
+            grid={{ gutter: 16, column: 1 }}
+            dataSource={this.props.films}
+            renderItem={el => (
+              <List.Item>
+                <Card
+                  className="MainPage-card"
+                  title={
+                    <Title level={3}>
+                      {el.title}
+                      <Icon
+                        type="edit"
+                        onClick={() => this.showModal(el)}
+                        //this.showModalDescription(el)
+                      />
+                    </Title>
+                  }
+                >
+                  <Title level={4}>Director: {el.director}</Title>
+                  <Title level={4}>Release date: {el.release_date}</Title>
+                  <Title level={4}>Rating: {el.rt_score}</Title>
+                  <Title level={4}>Description </Title>
 
-                    <Text>{el.description}</Text>
-                  </Card>
-                </List.Item>
-              )}
-            />
-          </div>
+                  <Text>{el.description}</Text>
+                </Card>
+              </List.Item>
+            )}
+          />
         )}
         <Modal
           visible={this.state.visible}

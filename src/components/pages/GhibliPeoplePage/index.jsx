@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Card, Typography, List, Icon, Button } from "antd";
 import { Link } from "react-router-dom";
-
+import Navigation from "../../organisms/navigation";
 const { Title } = Typography;
 
 class GhibliPeople extends React.Component {
@@ -28,13 +28,7 @@ class GhibliPeople extends React.Component {
   render() {
     return (
       <div>
-        <Button type="dashed">
-          <Icon type="left" />
-          <Link to="/main/navigation"> Navigation</Link>
-        </Button>
-        <Button type="dashed">
-          <Link to="/main"> Main</Link>
-        </Button>
+        <Navigation />
         <List
           grid={{ gutter: 16, column: 1 }}
           dataSource={this.props.people}
